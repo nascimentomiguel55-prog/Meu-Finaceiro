@@ -1,0 +1,49 @@
+@import url("reset.css");
+@import url("variables.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import url("variables.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  
+  background: var(--background);
+  
+  color: var(--text);
+  
+}
+
+#app {
+  
+  padding: 20px;
+  padding-bottom: 100px;
+  
+}
+
+.delete-button {
+  
+  margin-top: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, .15);
+  color: #EF4444;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+  
+}
+
+.delete-button:active {
+  
+  transform: scale(.96);
+  
+    }
