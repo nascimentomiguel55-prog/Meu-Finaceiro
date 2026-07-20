@@ -1,0 +1,450 @@
+.dashboard{
+    max-width:600px;
+    margin:0 auto;
+    padding-bottom:100px;
+}
+
+/* Header */
+
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.header-info h1{
+    font-size:22px;
+    font-weight:700;
+    color:#FFFFFF;
+    margin-bottom:4px;
+}
+
+.header-info p{
+    font-size:13px;
+    color:#94A3B8;
+    text-transform:capitalize;
+}
+
+.icon-btn{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:14px;
+    background:#1E293B;
+    color:#CBD5E1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+}
+
+.icon-btn i{
+    width:20px;
+    height:20px;
+}
+
+/* Acesso rápido */
+
+.quick-actions{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:6px;
+    margin-bottom:20px;
+    scrollbar-width:none;
+}
+
+.quick-actions::-webkit-scrollbar{
+    display:none;
+}
+
+.chip{
+    flex:0 0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    background:#1E293B;
+    border:none;
+    border-radius:16px;
+    padding:14px 16px;
+    color:#CBD5E1;
+    font-size:12px;
+    font-family:inherit;
+    cursor:pointer;
+    min-width:72px;
+}
+
+.chip i{
+    width:22px;
+    height:22px;
+    color:#60A5FA;
+}
+
+.chip:active{
+    transform:scale(.95);
+}
+
+/* Cards de resumo */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    background:#1E293B;
+    border-radius:18px;
+    padding:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.stat-icon{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:12px;
+}
+
+.stat-icon i{
+    width:19px;
+    height:19px;
+    color:#FFFFFF;
+}
+
+.stat-blue .stat-icon{ background:#2563EB; }
+.stat-green .stat-icon{ background:#16A34A; }
+.stat-red .stat-icon{ background:#DC2626; }
+.stat-purple .stat-icon{ background:#7C3AED; }
+
+.stat-label{
+    display:block;
+    font-size:12px;
+    color:#94A3B8;
+    margin-bottom:4px;
+}
+
+.stat-card strong{
+    font-size:17px;
+    color:#FFFFFF;
+    display:block;
+}
+
+/* Cards de lista */
+
+.lista-card{
+    background:#1E293B;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.lista-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.lista-card-header h3{
+    font-size:17px;
+    color:#FFFFFF;
+}
+
+.ver-todas{
+    font-size:13px;
+    color:#60A5FA;
+    cursor:pointer;
+}
+
+.empty-mini{
+    text-align:center;
+    padding:20px 10px;
+    color:#64748B;
+    font-size:13px;
+}
+
+/* Resumo de contas */
+
+.resumo-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid #0F172A;
+}
+
+.resumo-item:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.resumo-item-icon{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    background:#0F172A;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.resumo-item-icon i{
+    width:18px;
+    height:18px;
+    color:#60A5FA;
+}
+
+.resumo-item-info{
+    flex:1;
+    min-width:0;
+}
+
+.resumo-item-info h4{
+    font-size:14px;
+    color:#FFFFFF;
+    margin-bottom:2px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.resumo-item-info p{
+    font-size:12px;
+    color:#94A3B8;
+}
+
+.resumo-item strong{
+    font-size:14px;
+    color:#22C55E;
+    flex-shrink:0;
+}
+
+/* Vencimentos */
+
+.vencimento-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid #0F172A;
+}
+
+.vencimento-item:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.vencimento-icon{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    background:rgba(239,68,68,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.vencimento-icon i{
+    width:18px;
+    height:18px;
+    color:#EF4444;
+}
+
+.vencimento-info{
+    flex:1;
+    min-width:0;
+}
+
+.vencimento-info h4{
+    font-size:14px;
+    color:#FFFFFF;
+    margin-bottom:2px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.vencimento-info p{
+    font-size:12px;
+    color:#94A3B8;
+}
+
+.vencimento-valor{
+    text-align:right;
+    flex-shrink:0;
+}
+
+.vencimento-valor strong{
+    display:block;
+    font-size:14px;
+    color:#EF4444;
+    margin-bottom:2px;
+}
+
+.vencimento-valor span{
+    font-size:11px;
+    color:#94A3B8;
+}
+
+.vencimento-valor span.atrasado{
+    color:#F87171;
+    font-weight:600;
+}
+
+/* Anéis dos cartões */
+
+.rings-row{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    padding-bottom:4px;
+}
+
+.rings-row::-webkit-scrollbar{
+    display:none;
+}
+
+.ring-item{
+    flex:0 0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+}
+
+.ring{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:conic-gradient(var(--cor, #2563EB) calc(var(--pct, 0) * 1%), #0F172A 0);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.ring-inner{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#1E293B;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:700;
+    color:#FFFFFF;
+}
+
+.ring-item span{
+    font-size:11px;
+    color:#94A3B8;
+    max-width:70px;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* Dica do dia */
+
+.tip-card{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:linear-gradient(135deg, rgba(37,99,235,.15), rgba(124,58,237,.15));
+    border-radius:20px;
+    padding:18px;
+    margin-bottom:16px;
+}
+
+.tip-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:rgba(250,204,21,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.tip-icon i{
+    width:20px;
+    height:20px;
+    color:#FACC15;
+}
+
+.tip-texto h4{
+    font-size:14px;
+    color:#FFFFFF;
+    margin-bottom:4px;
+}
+
+.tip-texto p{
+    font-size:13px;
+    color:#CBD5E1;
+    line-height:1.5;
+}
+
+/* Mia */
+
+.mia-card{
+    background:#1E293B;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.titulo-card{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.titulo-card i{
+    width:20px;
+    height:20px;
+    color:#60A5FA;
+}
+
+.titulo-card h3{
+    font-size:16px;
+    color:#FFFFFF;
+}
+
+.mia-card p{
+    font-size:14px;
+    color:#CBD5E1;
+    line-height:1.5;
+    margin-bottom:16px;
+}
+
+.mia-btn{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:14px;
+    background:#2563EB;
+    color:#FFFFFF;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.mia-btn:active{
+    transform:scale(.98);
+}
