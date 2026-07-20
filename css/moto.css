@@ -1,0 +1,318 @@
+.page{
+    max-width:600px;
+    margin:0 auto;
+    padding-bottom:100px;
+}
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.page-header h2{
+    font-size:24px;
+    font-weight:700;
+}
+
+.page-header p{
+    color:#94A3B8;
+    font-size:14px;
+    margin-top:4px;
+}
+
+.back-btn{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:14px;
+    background:#1E293B;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.back-btn i{
+    width:22px;
+    height:22px;
+}
+
+.form-card,
+.lista-card{
+    background:#1E293B;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.form-card h3,
+.lista-card h3{
+    margin-bottom:20px;
+    font-size:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    color:#CBD5E1;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#0F172A;
+    color:#FFF;
+    font-size:15px;
+    outline:none;
+}
+
+.form-group input::placeholder{
+    color:#64748B;
+}
+
+.primary-button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#2563EB;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.primary-button:active{
+    transform:scale(.98);
+}
+
+.primary-button i{
+    width:20px;
+    height:20px;
+}
+
+.empty{
+    padding:35px 20px;
+    text-align:center;
+    color:#94A3B8;
+}
+
+.empty i{
+    width:48px;
+    height:48px;
+    margin-bottom:15px;
+    color:#3B82F6;
+}
+
+.empty-mini{
+    text-align:center;
+    padding:20px 10px;
+    color:#64748B;
+    font-size:13px;
+}
+
+/* Progresso da meta */
+
+.progresso-topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:10px;
+}
+
+.progresso-topo strong{
+    font-size:22px;
+    color:#FFF;
+}
+
+.progresso-topo span{
+    font-size:13px;
+    color:#94A3B8;
+}
+
+.progresso-barra{
+    width:100%;
+    height:12px;
+    background:#0F172A;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:8px;
+}
+
+.progresso-barra-preenchido{
+    height:100%;
+    border-radius:10px;
+    background:#2563EB;
+}
+
+.progresso-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:#94A3B8;
+    margin-bottom:10px;
+}
+
+.previsao-texto{
+    font-size:13px;
+    color:#CBD5E1;
+    background:#0F172A;
+    border-radius:10px;
+    padding:10px 12px;
+    margin-top:8px;
+}
+
+/* Aportes */
+
+.aporte-item{
+    background:#0F172A;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.aporte-info h4{
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.aporte-info p{
+    font-size:12px;
+    color:#94A3B8;
+}
+
+.aporte-valor{
+    text-align:right;
+}
+
+.aporte-valor strong{
+    display:block;
+    font-size:16px;
+    color:#22C55E;
+    margin-bottom:6px;
+}
+
+/* Cofrinhos */
+
+.cofrinho-item{
+    background:#0F172A;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:12px;
+}
+
+.cofrinho-topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:10px;
+}
+
+.cofrinho-topo h4{
+    font-size:16px;
+    margin-bottom:4px;
+}
+
+.cofrinho-saldo{
+    text-align:right;
+}
+
+.cofrinho-saldo strong{
+    display:block;
+    font-size:18px;
+    color:#22C55E;
+}
+
+.cofrinho-objetivo-barra{
+    width:100%;
+    height:8px;
+    background:#1E293B;
+    border-radius:10px;
+    overflow:hidden;
+    margin:8px 0 6px;
+}
+
+.cofrinho-objetivo-preenchido{
+    height:100%;
+    border-radius:10px;
+    background:#7C3AED;
+}
+
+.cofrinho-objetivo-info{
+    font-size:12px;
+    color:#94A3B8;
+}
+
+/* Histórico de cofrinhos */
+
+.historico-cofrinho-item{
+    background:#0F172A;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.historico-cofrinho-info h4{
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.historico-cofrinho-info p{
+    font-size:12px;
+    color:#94A3B8;
+}
+
+.historico-cofrinho-valor{
+    text-align:right;
+}
+
+.historico-cofrinho-valor strong{
+    display:block;
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.badge{
+    font-size:11px;
+    padding:4px 10px;
+    border-radius:20px;
+    font-weight:600;
+    white-space:nowrap;
+    display:inline-block;
+}
+
+.badge-deposito{
+    background:rgba(34,197,94,.15);
+    color:#22C55E;
+}
+
+.badge-retirada{
+    background:rgba(239,68,68,.15);
+    color:#EF4444;
+}
