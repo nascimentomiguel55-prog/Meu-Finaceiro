@@ -1,0 +1,114 @@
+<div class="page">
+  
+  <header class="page-header">
+    
+    <button class="back-btn" onclick="carregarPagina('dashboard')">
+      <i data-lucide="arrow-left"></i>
+    </button>
+    
+    <div>
+      <h2>Metas</h2>
+      <p>Seus objetivos financeiros</p>
+    </div>
+    
+  </header>
+  
+  <section class="form-card">
+    
+    <h3>Nova Meta</h3>
+    
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" id="nomeMeta" placeholder="Ex.: Viagem para praia">
+    </div>
+    
+    <div class="form-group">
+      <label>Valor Objetivo</label>
+      <input type="number" id="valorObjetivoMeta" placeholder="0,00" step="0.01">
+    </div>
+    
+    <div class="form-group">
+      <label>Data Alvo (opcional)</label>
+      <input type="date" id="dataAlvoMeta">
+    </div>
+    
+    <div class="form-group">
+      <label>Prioridade</label>
+      <select id="prioridadeMeta">
+        <option value="alta">Alta</option>
+        <option value="media">Média</option>
+        <option value="baixa">Baixa</option>
+      </select>
+    </div>
+    
+    <button class="primary-button" onclick="salvarMeta()">
+      <i data-lucide="target"></i>
+      Criar Meta
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Minhas Metas</h3>
+    
+    <div id="listaMetas">
+      
+      <div class="empty">
+        <i data-lucide="target"></i>
+        <p>Nenhuma meta criada ainda.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+  <section class="form-card">
+    
+    <h3>Novo Aporte</h3>
+    
+    <div class="form-group">
+      <label>Meta</label>
+      <select id="metaSelect">
+        <option value="">Selecione uma meta</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Valor</label>
+      <input type="number" id="valorAporteMeta" placeholder="0,00" step="0.01">
+    </div>
+    
+    <div class="form-group">
+      <label>Descrição</label>
+      <input type="text" id="descricaoAporteMeta" placeholder="Ex.: Economia do mês">
+    </div>
+    
+    <div class="form-group">
+      <label>Data</label>
+      <input type="date" id="dataAporteMeta">
+    </div>
+    
+    <button class="primary-button" onclick="registrarAporteMeta()">
+      <i data-lucide="piggy-bank"></i>
+      Registrar Aporte
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Histórico de Aportes</h3>
+    
+    <div id="listaHistoricoAportesMeta">
+      
+      <div class="empty">
+        <i data-lucide="history"></i>
+        <p>Nenhum aporte registrado ainda.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+</div>
