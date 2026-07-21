@@ -1,0 +1,148 @@
+<div class="page">
+
+    <header class="page-header">
+
+        <button class="back-btn" onclick="carregarPagina('dashboard')">
+            <i data-lucide="arrow-left"></i>
+        </button>
+
+        <div>
+            <h2>Relatórios</h2>
+            <p>Receitas, despesas e categorias</p>
+        </div>
+
+    </header>
+
+    <div class="tabs-relatorio">
+
+        <button class="tab-relatorio tab-ativa" id="tab-mensal" onclick="alternarAbaRelatorio('mensal')">
+            Mensal
+        </button>
+
+        <button class="tab-relatorio" id="tab-anual" onclick="alternarAbaRelatorio('anual')">
+            Anual
+        </button>
+
+    </div>
+
+    <!-- ============ MENSAL ============ -->
+
+    <div id="secaoMensal">
+
+        <section class="lista-card">
+
+            <div class="form-group">
+                <label>Mês</label>
+                <select id="mesRelatorioSelect" onchange="renderRelatorioMensal()">
+                </select>
+            </div>
+
+        </section>
+
+        <section class="stats-grid-relatorio">
+
+            <div class="stat-mini stat-mini-green">
+                <span>Receitas</span>
+                <strong id="receitasMesRelatorio">R$ 0,00</strong>
+            </div>
+
+            <div class="stat-mini stat-mini-red">
+                <span>Despesas</span>
+                <strong id="despesasMesRelatorio">R$ 0,00</strong>
+            </div>
+
+            <div class="stat-mini stat-mini-blue">
+                <span>Saldo</span>
+                <strong id="saldoMesRelatorio">R$ 0,00</strong>
+            </div>
+
+        </section>
+
+        <section class="lista-card">
+
+            <p id="comparacaoMesRelatorio" class="comparacao-texto">Sem dados para comparar.</p>
+
+        </section>
+
+        <section class="lista-card">
+
+            <h3>Despesas por Categoria</h3>
+
+            <div id="categoriasDespesasMensal">
+
+                <div class="empty-mini"><p>Sem dados neste mês.</p></div>
+
+            </div>
+
+        </section>
+
+        <section class="lista-card">
+
+            <h3>Receitas por Categoria</h3>
+
+            <div id="categoriasReceitasMensal">
+
+                <div class="empty-mini"><p>Sem dados neste mês.</p></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- ============ ANUAL ============ -->
+
+    <div id="secaoAnual" style="display:none;">
+
+        <section class="lista-card">
+
+            <div class="form-group">
+                <label>Ano</label>
+                <select id="anoRelatorioSelect" onchange="renderRelatorioAnual()">
+                </select>
+            </div>
+
+        </section>
+
+        <section class="stats-grid-relatorio">
+
+            <div class="stat-mini stat-mini-green">
+                <span>Receitas</span>
+                <strong id="receitasAnoRelatorio">R$ 0,00</strong>
+            </div>
+
+            <div class="stat-mini stat-mini-red">
+                <span>Despesas</span>
+                <strong id="despesasAnoRelatorio">R$ 0,00</strong>
+            </div>
+
+            <div class="stat-mini stat-mini-blue">
+                <span>Saldo</span>
+                <strong id="saldoAnoRelatorio">R$ 0,00</strong>
+            </div>
+
+        </section>
+
+        <section class="lista-card">
+
+            <h3>Despesas por Mês</h3>
+
+            <div id="graficoAnual" class="grafico-anual"></div>
+
+        </section>
+
+        <section class="lista-card">
+
+            <h3>Despesas por Categoria (ano)</h3>
+
+            <div id="categoriasDespesasAnual">
+
+                <div class="empty-mini"><p>Sem dados neste ano.</p></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
