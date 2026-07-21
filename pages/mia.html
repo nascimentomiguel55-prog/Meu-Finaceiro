@@ -1,0 +1,53 @@
+<div class="page">
+
+    <header class="page-header">
+
+        <button class="back-btn" onclick="carregarPagina('dashboard')">
+            <i data-lucide="arrow-left"></i>
+        </button>
+
+        <div>
+            <h2>Mia</h2>
+            <p>Sua assistente financeira</p>
+        </div>
+
+    </header>
+
+    <div class="mia-sugestoes">
+
+        <button class="mia-chip" onclick="enviarSugestaoMia('saldo')">💰 Saldo</button>
+
+        <button class="mia-chip" onclick="enviarSugestaoMia('vencimentos')">📅 Vencimentos</button>
+
+        <button class="mia-chip" onclick="enviarSugestaoMia('lista de mercado')">🛒 Mercado</button>
+
+        <button class="mia-chip" onclick="enviarSugestaoMia('ajuda')">❓ Ajuda</button>
+
+        <button class="mia-chip" id="vozToggleMia" onclick="alternarVozMia()">🔊 Voz ligada</button>
+
+    </div>
+
+    <div class="chat-mensagens" id="chatMensagens">
+
+    </div>
+
+    <div class="chat-input-area">
+
+        <button class="mic-btn" id="micBtnMia" onclick="alternarOuvirMia()">
+            <i data-lucide="mic"></i>
+        </button>
+
+        <input
+            type="text"
+            id="chatInput"
+            placeholder="Escreva ou fale com a Mia..."
+            onkeypress="if(event.key==='Enter'){enviarMensagemMia();}"
+        >
+
+        <button class="chat-send-btn" onclick="enviarMensagemMia()">
+            <i data-lucide="send"></i>
+        </button>
+
+    </div>
+
+</div>
