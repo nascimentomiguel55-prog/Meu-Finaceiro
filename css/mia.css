@@ -1,0 +1,199 @@
+.page{
+    max-width:600px;
+    margin:0 auto;
+    padding-bottom:120px;
+    display:flex;
+    flex-direction:column;
+}
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.page-header h2{
+    font-size:24px;
+    font-weight:700;
+}
+
+.page-header p{
+    color:#94A3B8;
+    font-size:14px;
+    margin-top:4px;
+}
+
+.back-btn{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:14px;
+    background:#1E293B;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.back-btn i{
+    width:22px;
+    height:22px;
+}
+
+/* Sugestões rápidas */
+
+.mia-sugestoes{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:6px;
+    margin-bottom:16px;
+    scrollbar-width:none;
+}
+
+.mia-sugestoes::-webkit-scrollbar{
+    display:none;
+}
+
+.mia-chip{
+    flex:0 0 auto;
+    padding:10px 16px;
+    border:none;
+    border-radius:20px;
+    background:#1E293B;
+    color:#CBD5E1;
+    font-size:13px;
+    font-family:inherit;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.mia-chip:active{
+    transform:scale(.95);
+}
+
+/* Mensagens do chat */
+
+.chat-mensagens{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:16px;
+}
+
+.chat-bubble{
+    max-width:80%;
+    padding:12px 16px;
+    border-radius:16px;
+    font-size:14px;
+    line-height:1.5;
+    white-space:pre-line;
+}
+
+.chat-bubble p{
+    margin:0;
+}
+
+.chat-bubble-mia{
+    align-self:flex-start;
+    background:#1E293B;
+    color:#E2E8F0;
+    border-bottom-left-radius:4px;
+}
+
+.chat-bubble-user{
+    align-self:flex-end;
+    background:#2563EB;
+    color:#FFFFFF;
+    border-bottom-right-radius:4px;
+}
+
+/* Área de input */
+
+.chat-input-area{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    background:#1E293B;
+    border-radius:16px;
+    padding:8px 8px 8px 16px;
+    position:sticky;
+    bottom:90px;
+}
+
+.chat-input-area input{
+    flex:1;
+    border:none;
+    background:transparent;
+    color:#FFFFFF;
+    font-size:15px;
+    outline:none;
+    font-family:inherit;
+}
+
+.chat-input-area input::placeholder{
+    color:#64748B;
+}
+
+.chat-send-btn{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#2563EB;
+    color:#FFFFFF;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+}
+
+.chat-send-btn i{
+    width:20px;
+    height:20px;
+}
+
+.chat-send-btn:active{
+    transform:scale(.95);
+}
+
+/* Botão de microfone */
+
+.mic-btn{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#0F172A;
+    color:#94A3B8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+    transition:.2s;
+}
+
+.mic-btn i{
+    width:20px;
+    height:20px;
+}
+
+.mic-btn:active{
+    transform:scale(.95);
+}
+
+.mic-btn.mic-ativo{
+    background:#EF4444;
+    color:#FFFFFF;
+    animation:pulsoMic 1.2s infinite;
+}
+
+@keyframes pulsoMic{
+    0%{ box-shadow:0 0 0 0 rgba(239,68,68,.5); }
+    70%{ box-shadow:0 0 0 10px rgba(239,68,68,0); }
+    100%{ box-shadow:0 0 0 0 rgba(239,68,68,0); }
+}
