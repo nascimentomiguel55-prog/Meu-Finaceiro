@@ -1,0 +1,124 @@
+<div class="page">
+  
+  <header class="page-header">
+    
+    <button class="back-btn" onclick="carregarPagina('dashboard')">
+      <i data-lucide="arrow-left"></i>
+    </button>
+    
+    <div>
+      <h2>Mercado</h2>
+      <p>Lista de compras e comparação de preços</p>
+    </div>
+    
+  </header>
+  
+  <section class="form-card">
+    
+    <h3>Adicionar Item</h3>
+    
+    <div class="form-group">
+      <label>Produto</label>
+      <input type="text" id="nomeProdutoMercado" placeholder="Ex.: Arroz 5kg">
+    </div>
+    
+    <div class="form-group">
+      <label>Categoria</label>
+      <select id="categoriaMercado">
+        <option>Alimentos</option>
+        <option>Hortifruti</option>
+        <option>Açougue</option>
+        <option>Padaria</option>
+        <option>Bebidas</option>
+        <option>Limpeza</option>
+        <option>Higiene</option>
+        <option>Outros</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Quantidade</label>
+      <input type="number" id="quantidadeMercado" min="0.01" step="0.01" value="1">
+    </div>
+    
+    <div class="form-group">
+      <label>Preço Unitário</label>
+      <input type="number" id="precoMercado" placeholder="0,00" step="0.01">
+    </div>
+    
+    <button class="primary-button" onclick="salvarItemMercado()">
+      <i data-lucide="plus"></i>
+      Adicionar à Lista
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Lista de Compras</h3>
+    
+    <div id="listaItensMercado">
+      
+      <div class="empty">
+        <i data-lucide="shopping-cart"></i>
+        <p>Sua lista está vazia.</p>
+      </div>
+      
+    </div>
+    
+    <div class="total-mes">
+      <span>Total estimado</span>
+      <strong id="totalListaMercado">R$ 0,00</strong>
+    </div>
+    
+  </section>
+  
+  <section class="form-card">
+    
+    <h3>Finalizar Compra</h3>
+    
+    <div class="form-group">
+      <label>Forma de Pagamento</label>
+      <select id="formaPagamentoMercado" onchange="alternarFormaPagamentoMercado()">
+        <option value="conta">Conta Bancária</option>
+        <option value="vr">Vale Alimentação (VR)</option>
+      </select>
+    </div>
+    
+    <div class="form-group" id="grupoContaMercado">
+      <label>Pagar com a conta</label>
+      <select id="contaPagamentoMercado">
+        <option value="">Selecione uma conta</option>
+      </select>
+    </div>
+    
+    <div class="form-group" id="grupoVrMercado" style="display:none;">
+      <label>Pagar com o VR</label>
+      <select id="vrPagamentoMercado">
+        <option value="">Selecione um vale</option>
+      </select>
+    </div>
+    
+    <button class="primary-button" onclick="finalizarCompraMercado()">
+      <i data-lucide="check"></i>
+      Finalizar Compra
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Histórico de Compras</h3>
+    
+    <div id="listaHistoricoMercado">
+      
+      <div class="empty">
+        <i data-lucide="history"></i>
+        <p>Nenhuma compra finalizada ainda.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+</div>
