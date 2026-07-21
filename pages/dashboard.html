@@ -1,0 +1,169 @@
+<div class="dashboard">
+
+  <!-- Header -->
+  <header class="top-header">
+
+    <div class="header-info">
+      <h1 id="saudacao">Olá, Wellington 👋</h1>
+      <p id="dataAtual">Carregando data...</p>
+    </div>
+
+    <button class="icon-btn">
+      <i data-lucide="bell"></i>
+    </button>
+
+  </header>
+
+  <!-- Acesso rápido aos módulos -->
+  <section class="quick-actions">
+
+    <button class="chip" onclick="carregarPagina('bancos')">
+      <i data-lucide="landmark"></i>
+      <span>Bancos</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('financeiro')">
+      <i data-lucide="arrow-left-right"></i>
+      <span>Financeiro</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('cartoes')">
+      <i data-lucide="credit-card"></i>
+      <span>Cartões</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('mercado')">
+      <i data-lucide="shopping-cart"></i>
+      <span>Mercado</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('vr')">
+      <i data-lucide="utensils"></i>
+      <span>VR</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('casa')">
+      <i data-lucide="house"></i>
+      <span>Casa</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('moto')">
+      <i data-lucide="bike"></i>
+      <span>Moto</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('metas')">
+      <i data-lucide="target"></i>
+      <span>Metas</span>
+    </button>
+
+    <button class="chip" onclick="carregarPagina('relatorios')">
+      <i data-lucide="bar-chart-3"></i>
+      <span>Relatórios</span>
+    </button>
+
+  </section>
+
+  <!-- Cards de resumo -->
+  <section class="stats-grid">
+
+    <div class="stat-card stat-blue">
+      <div class="stat-icon"><i data-lucide="wallet"></i></div>
+      <span class="stat-label">Saldo Total</span>
+      <strong id="saldoTotal">R$ 0,00</strong>
+    </div>
+
+    <div class="stat-card stat-green">
+      <div class="stat-icon"><i data-lucide="trending-up"></i></div>
+      <span class="stat-label">Receitas (mês)</span>
+      <strong id="receitasMes">R$ 0,00</strong>
+    </div>
+
+    <div class="stat-card stat-red">
+      <div class="stat-icon"><i data-lucide="trending-down"></i></div>
+      <span class="stat-label">Despesas (mês)</span>
+      <strong id="despesasMes">R$ 0,00</strong>
+    </div>
+
+    <div class="stat-card stat-purple">
+      <div class="stat-icon"><i data-lucide="pie-chart"></i></div>
+      <span class="stat-label">Disponível</span>
+      <strong id="disponivelMes">R$ 0,00</strong>
+    </div>
+
+  </section>
+
+  <!-- Contas e Carteiras -->
+  <section class="lista-card">
+
+    <div class="lista-card-header">
+      <h3>Contas e Carteiras</h3>
+      <span class="ver-todas" onclick="carregarPagina('bancos')">Ver todas</span>
+    </div>
+
+    <div id="resumoContas">
+      <div class="empty-mini"><p>Nenhuma conta cadastrada.</p></div>
+    </div>
+
+  </section>
+
+  <!-- Próximos vencimentos -->
+  <section class="lista-card">
+
+    <div class="lista-card-header">
+      <h3>Próximos Vencimentos</h3>
+    </div>
+
+    <div id="resumoVencimentos">
+      <div class="empty-mini"><p>Nenhum vencimento pendente.</p></div>
+    </div>
+
+  </section>
+
+  <!-- Cartões (limite usado) -->
+  <section class="lista-card">
+
+    <div class="lista-card-header">
+      <h3>Cartões</h3>
+      <span class="ver-todas" onclick="carregarPagina('cartoes')">Ver todos</span>
+    </div>
+
+    <div id="ringsCartoes" class="rings-row">
+      <div class="empty-mini"><p>Nenhum cartão cadastrado.</p></div>
+    </div>
+
+  </section>
+
+  <!-- Dica do dia -->
+  <section class="tip-card">
+
+    <div class="tip-icon"><i data-lucide="lightbulb"></i></div>
+
+    <div class="tip-texto">
+      <h4>Dica do dia</h4>
+      <p id="dicaDoDia">Carregando dica...</p>
+    </div>
+
+  </section>
+
+  <!-- Mia -->
+  <section class="mia-card">
+
+    <div class="titulo-card">
+      <i data-lucide="bot"></i>
+      <h3>Mia</h3>
+    </div>
+
+    <p>
+      Bom dia, Wellington.
+      <br><br>
+      Estou pronta para ajudar você a organizar sua vida financeira.
+    </p>
+
+    <button class="mia-btn" onclick="carregarPagina('mia')">
+      Conversar
+    </button>
+
+  </section>
+
+</div>
