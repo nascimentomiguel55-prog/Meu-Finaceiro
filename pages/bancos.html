@@ -1,0 +1,93 @@
+<div class="page">
+
+    <header class="page-header">
+
+        <button class="back-btn" onclick="carregarPagina('dashboard')">
+            <i data-lucide="arrow-left"></i>
+        </button>
+
+        <div>
+            <h2>Contas Financeiras</h2>
+            <p>Bancos, Carteira e Contas</p>
+        </div>
+
+    </header>
+
+    <section class="form-card">
+
+        <h3>Nova Conta</h3>
+
+        <div class="form-group">
+            <label>Nome</label>
+            <input
+                type="text"
+                id="nomeConta"
+                placeholder="Ex.: Caixa Econômica"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Tipo</label>
+
+            <select id="tipoConta">
+
+                <option>Conta Corrente</option>
+
+                <option>Conta Poupança</option>
+
+                <option>Conta Salário</option>
+
+                <option>Conta Digital</option>
+
+                <option>Carteira</option>
+
+                <option>Dinheiro</option>
+
+                <option>Investimento</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Saldo Inicial</label>
+
+            <input
+                type="number"
+                id="saldoConta"
+                placeholder="0.00"
+            >
+
+        </div>
+
+        <button
+            class="primary-button"
+            onclick="salvarConta()">
+
+            <i data-lucide="plus"></i>
+
+            Adicionar Conta
+
+        </button>
+
+    </section>
+
+    <section class="lista-card">
+
+        <h3>Minhas Contas</h3>
+
+        <div id="listaContas">
+
+            <div class="empty">
+
+                <i data-lucide="wallet"></i>
+
+                <p>Nenhuma conta cadastrada.</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
