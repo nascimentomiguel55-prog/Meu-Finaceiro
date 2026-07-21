@@ -1,0 +1,130 @@
+<div class="page">
+
+    <header class="page-header">
+
+        <button class="back-btn" onclick="carregarPagina('dashboard')">
+            <i data-lucide="arrow-left"></i>
+        </button>
+
+        <div>
+            <h2>Movimentações</h2>
+            <p>Entradas, saídas e transferências</p>
+        </div>
+
+    </header>
+
+    <section class="form-card">
+
+        <h3>Nova Movimentação</h3>
+
+        <div class="form-group">
+
+            <label>Conta</label>
+
+            <select id="contaMovimento">
+                <option value="">Selecione uma conta</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Tipo</label>
+
+            <select id="tipoMovimento">
+
+                <option value="entrada">Entrada</option>
+
+                <option value="saida">Saída</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Categoria</label>
+
+            <select id="categoriaMovimento">
+
+                <option>Salário</option>
+                <option>PIX</option>
+                <option>Mercado</option>
+                <option>Combustível</option>
+                <option>Internet</option>
+                <option>Luz</option>
+                <option>Condomínio</option>
+                <option>Apartamento</option>
+                <option>Manutenção Moto</option>
+                <option>Outros</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Valor</label>
+
+            <input
+                type="number"
+                id="valorMovimento"
+                placeholder="0,00"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Descrição</label>
+
+            <input
+                type="text"
+                id="descricaoMovimento"
+                placeholder="Descrição"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Data</label>
+
+            <input
+                type="date"
+                id="dataMovimento"
+            >
+
+        </div>
+
+        <button
+            class="primary-button"
+            onclick="salvarMovimentacao()">
+
+            <i data-lucide="save"></i>
+
+            Salvar Movimentação
+
+        </button>
+
+    </section>
+
+    <section class="lista-card">
+
+        <h3>Histórico</h3>
+
+        <div id="listaMovimentos">
+
+            <div class="empty">
+
+                <i data-lucide="receipt-text"></i>
+
+                <p>Nenhuma movimentação cadastrada.</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
