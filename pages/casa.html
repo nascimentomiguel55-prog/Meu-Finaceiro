@@ -1,0 +1,105 @@
+<div class="page">
+  
+  <header class="page-header">
+    
+    <button class="back-btn" onclick="carregarPagina('dashboard')">
+      <i data-lucide="arrow-left"></i>
+    </button>
+    
+    <div>
+      <h2>Casa</h2>
+      <p>Contas fixas mensais</p>
+    </div>
+    
+  </header>
+  
+  <section class="form-card">
+    
+    <h3>Nova Conta Fixa</h3>
+    
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" id="nomeContaCasa" placeholder="Ex.: Condomínio">
+    </div>
+    
+    <div class="form-group">
+      <label>Categoria</label>
+      <select id="categoriaContaCasa">
+        <option>Prestação Apartamento</option>
+        <option>Condomínio</option>
+        <option>Luz</option>
+        <option>Água</option>
+        <option>Internet</option>
+        <option>Gás</option>
+        <option>IPTU</option>
+        <option>Outras</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Valor Padrão</label>
+      <input type="number" id="valorContaCasa" placeholder="0,00">
+    </div>
+    
+    <div class="form-group">
+      <label>Dia de Vencimento</label>
+      <input type="number" id="vencimentoContaCasa" min="1" max="31" placeholder="Ex.: 10">
+    </div>
+    
+    <button class="primary-button" onclick="salvarContaCasa()">
+      <i data-lucide="plus"></i>
+      Adicionar Conta Fixa
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Contas Fixas Cadastradas</h3>
+    
+    <div id="listaContasCasaFixas">
+      
+      <div class="empty">
+        <i data-lucide="house"></i>
+        <p>Nenhuma conta fixa cadastrada.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Contas do Mês</h3>
+    
+    <div class="form-group">
+      <label>Mês</label>
+      <select id="mesCasaSelect" onchange="listarLancamentosCasa()">
+        <option value="">Selecione o mês</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Pagar com a conta</label>
+      <select id="contaPagamentoCasa">
+        <option value="">Selecione uma conta</option>
+      </select>
+    </div>
+    
+    <div id="listaLancamentosCasa">
+      
+      <div class="empty">
+        <i data-lucide="receipt"></i>
+        <p>Nenhuma conta neste mês.</p>
+      </div>
+      
+    </div>
+    
+    <div class="total-mes">
+      <span>Total pendente</span>
+      <strong id="totalPendenteCasa">R$ 0,00</strong>
+    </div>
+    
+  </section>
+  
+</div>
