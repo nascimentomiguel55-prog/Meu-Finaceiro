@@ -1,0 +1,186 @@
+<div class="page">
+  
+  <header class="page-header">
+    
+    <button class="back-btn" onclick="carregarPagina('dashboard')">
+      <i data-lucide="arrow-left"></i>
+    </button>
+    
+    <div>
+      <h2>Cartões</h2>
+      <p>Cartões, compras e faturas</p>
+    </div>
+    
+  </header>
+  
+  <section class="form-card">
+    
+    <h3>Novo Cartão</h3>
+    
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" id="nomeCartao" placeholder="Ex.: Nubank">
+    </div>
+    
+    <div class="form-group">
+      <label>Banco</label>
+      <input type="text" id="bancoCartao" placeholder="Ex.: Nubank">
+    </div>
+    
+    <div class="form-group">
+      <label>Bandeira</label>
+      <select id="bandeiraCartao">
+        <option>Visa</option>
+        <option>Mastercard</option>
+        <option>Elo</option>
+        <option>American Express</option>
+        <option>Outra</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Limite</label>
+      <input type="number" id="limiteCartao" placeholder="0,00">
+    </div>
+    
+    <div class="form-group">
+      <label>Dia de Fechamento</label>
+      <input type="number" id="fechamentoCartao" min="1" max="31" placeholder="Ex.: 20">
+    </div>
+    
+    <div class="form-group">
+      <label>Dia de Vencimento</label>
+      <input type="number" id="vencimentoCartao" min="1" max="31" placeholder="Ex.: 28">
+    </div>
+    
+    <div class="form-group">
+      <label>Cor</label>
+      <select id="corCartao">
+        <option value="#8A05BE">Roxo (Nubank)</option>
+        <option value="#EC7000">Laranja (Inter)</option>
+        <option value="#2563EB">Azul</option>
+        <option value="#059669">Verde</option>
+        <option value="#64748B">Cinza</option>
+      </select>
+    </div>
+    
+    <button class="primary-button" onclick="salvarCartao()">
+      <i data-lucide="plus"></i>
+      Adicionar Cartão
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Meus Cartões</h3>
+    
+    <div id="listaCartoes">
+      
+      <div class="empty">
+        <i data-lucide="credit-card"></i>
+        <p>Nenhum cartão cadastrado.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+  <section class="form-card">
+    
+    <h3>Nova Compra</h3>
+    
+    <div class="form-group">
+      <label>Cartão</label>
+      <select id="compraCartao">
+        <option value="">Selecione um cartão</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Descrição</label>
+      <input type="text" id="descricaoCompra" placeholder="Ex.: Supermercado">
+    </div>
+    
+    <div class="form-group">
+      <label>Categoria</label>
+      <select id="categoriaCompra">
+        <option>Mercado</option>
+        <option>Combustível</option>
+        <option>Lazer</option>
+        <option>Roupas</option>
+        <option>Saúde</option>
+        <option>Eletrônicos</option>
+        <option>Outros</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Valor Total</label>
+      <input type="number" id="valorCompra" placeholder="0,00">
+    </div>
+    
+    <div class="form-group">
+      <label>Parcelas</label>
+      <input type="number" id="parcelasCompra" min="1" max="24" value="1">
+    </div>
+    
+    <div class="form-group">
+      <label>Data da Compra</label>
+      <input type="date" id="dataCompra">
+    </div>
+    
+    <button class="primary-button" onclick="salvarCompra()">
+      <i data-lucide="shopping-bag"></i>
+      Registrar Compra
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Fatura</h3>
+    
+    <div class="form-group">
+      <label>Cartão</label>
+      <select id="faturaCartaoSelect" onchange="popularMesesFatura()">
+        <option value="">Selecione um cartão</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Mês da Fatura</label>
+      <select id="faturaMesSelect" onchange="listarFatura()">
+        <option value="">Selecione o mês</option>
+      </select>
+    </div>
+    
+    <div id="listaFatura">
+      
+      <div class="empty">
+        <i data-lucide="receipt"></i>
+        <p>Selecione um cartão e um mês.</p>
+      </div>
+      
+    </div>
+    
+    <div class="fatura-total">
+      <span>Total a pagar</span>
+      <strong id="totalFatura">R$ 0,00</strong>
+    </div>
+    
+    <div class="form-group">
+      <label>Pagar com a conta</label>
+      <select id="contaPagamentoFatura">
+        <option value="">Selecione uma conta</option>
+      </select>
+    </div>
+    
+    <button class="primary-button" onclick="pagarFatura()">
+      <i data-lucide="check"></i>
+      Pagar Fatura
+    </button>
+    
+  </section>
+  
+</div>
