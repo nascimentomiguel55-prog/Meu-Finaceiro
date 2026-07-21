@@ -1,0 +1,191 @@
+<div class="page">
+  
+  <header class="page-header">
+    
+    <button class="back-btn" onclick="carregarPagina('dashboard')">
+      <i data-lucide="arrow-left"></i>
+    </button>
+    
+    <div>
+      <h2>Projeto Moto</h2>
+      <p>Meta de economia e reservas</p>
+    </div>
+    
+  </header>
+  
+  <section class="form-card">
+    
+    <h3>Meta da Moto</h3>
+    
+    <div class="form-group">
+      <label>Valor da Moto (referência)</label>
+      <input type="number" id="valorMotoMeta" placeholder="0,00" step="0.01">
+    </div>
+    
+    <div class="form-group">
+      <label>Valor de Entrada (objetivo a economizar)</label>
+      <input type="number" id="valorEntradaMeta" placeholder="0,00" step="0.01">
+    </div>
+    
+    <button class="primary-button" onclick="salvarMetaMoto()">
+      <i data-lucide="target"></i>
+      Salvar Meta
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Progresso</h3>
+    
+    <div id="progressoMoto">
+      
+      <div class="empty-mini">
+        <p>Defina a meta acima para acompanhar o progresso.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+  <section class="form-card">
+    
+    <h3>Novo Aporte</h3>
+    
+    <div class="form-group">
+      <label>Valor</label>
+      <input type="number" id="valorAporteMoto" placeholder="0,00" step="0.01">
+    </div>
+    
+    <div class="form-group">
+      <label>Descrição</label>
+      <input type="text" id="descricaoAporteMoto" placeholder="Ex.: Economia do mês">
+    </div>
+    
+    <div class="form-group">
+      <label>Data</label>
+      <input type="date" id="dataAporteMoto">
+    </div>
+    
+    <button class="primary-button" onclick="registrarAporteMoto()">
+      <i data-lucide="piggy-bank"></i>
+      Registrar Aporte
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Histórico de Aportes</h3>
+    
+    <div id="listaAportesMoto">
+      
+      <div class="empty">
+        <i data-lucide="piggy-bank"></i>
+        <p>Nenhum aporte registrado ainda.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+  <section class="form-card">
+    
+    <h3>Novo Cofrinho de Reserva</h3>
+    
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" id="nomeCofrinho" list="sugestoesCofrinho" placeholder="Ex.: Manutenção">
+      <datalist id="sugestoesCofrinho">
+        <option value="Manutenção">
+        <option value="IPVA">
+        <option value="Seguro">
+        <option value="Licenciamento">
+        <option value="Combustível">
+      </datalist>
+    </div>
+    
+    <div class="form-group">
+      <label>Objetivo (opcional)</label>
+      <input type="number" id="objetivoCofrinho" placeholder="0,00" step="0.01">
+    </div>
+    
+    <button class="primary-button" onclick="salvarCofrinho()">
+      <i data-lucide="plus"></i>
+      Criar Cofrinho
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Cofrinhos de Reserva</h3>
+    
+    <div id="listaCofrinhos">
+      
+      <div class="empty">
+        <i data-lucide="piggy-bank"></i>
+        <p>Nenhum cofrinho criado ainda.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+  <section class="form-card">
+    
+    <h3>Movimentar Cofrinho</h3>
+    
+    <div class="form-group">
+      <label>Cofrinho</label>
+      <select id="cofrinhoSelect">
+        <option value="">Selecione um cofrinho</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Tipo</label>
+      <select id="tipoMovimentoCofrinho">
+        <option value="deposito">Depósito</option>
+        <option value="retirada">Retirada</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Valor</label>
+      <input type="number" id="valorMovimentoCofrinho" placeholder="0,00" step="0.01">
+    </div>
+    
+    <div class="form-group">
+      <label>Descrição</label>
+      <input type="text" id="descricaoMovimentoCofrinho" placeholder="Ex.: Troca de óleo">
+    </div>
+    
+    <div class="form-group">
+      <label>Data</label>
+      <input type="date" id="dataMovimentoCofrinho">
+    </div>
+    
+    <button class="primary-button" onclick="registrarMovimentoCofrinho()">
+      <i data-lucide="check"></i>
+      Registrar
+    </button>
+    
+  </section>
+  
+  <section class="lista-card">
+    
+    <h3>Histórico dos Cofrinhos</h3>
+    
+    <div id="listaHistoricoCofrinhos">
+      
+      <div class="empty">
+        <i data-lucide="history"></i>
+        <p>Nenhuma movimentação ainda.</p>
+      </div>
+      
+    </div>
+    
+  </section>
+  
+</div>
