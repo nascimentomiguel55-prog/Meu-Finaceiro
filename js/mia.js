@@ -13,6 +13,14 @@ let reconhecimentoVozMia = null;
 
 let ouvindoVoz = false;
 
+// Modo contínuo: depois de tocar o microfone uma vez, ela continua
+// ouvindo e respondendo em loop, sem precisar tocar de novo
+let modoContinuoAtivo = false;
+
+// Marca se a sessão atual de escuta capturou alguma fala (usado para saber
+// se devemos reiniciar automaticamente após um silêncio, no modo contínuo)
+let resultadoRecebidoNestaSessao = false;
+
 // Se a Mia deve falar as respostas em voz alta (fica salvo)
 let vozAtivadaMia = JSON.parse(localStorage.getItem("vozAtivadaMia")) ?? true;
 
@@ -58,7 +66,7 @@ function renderizarChatMia() {
 
         adicionarMensagemMia(
 
-            "Oi, Wellington! Eu sou a Mia 🤖\n\nPosso te contar seu saldo, seus próximos vencimentos ou sua lista de mercado. Também posso registrar gastos e receitas — é só me escrever algo como \"gastei 50 no mercado\" ou \"recebi 200 de salário\".",
+            "Oi, Wellington! Eu sou a Mia 🤖\n\nPosso te contar seu saldo, seus próximos vencimentos ou sua lista de mercado. Também posso registrar gastos e receitas — é só me escrever algo como \"gastei 50 no mercado\" ou \"recebi 200 de salário\".\n\nToque no microfone e eu fico ouvindo em loop, respondendo cada frase, até você tocar de novo para parar (ou dizer \"parar\").",
 
             false
 
@@ -100,7 +108,17 @@ function enviarMensagemMia() {
 
     renderizarChatMia();
 
-    falarTextoMia(resposta);
+    // Fala a resposta e, quando ela terminar de falar, se o modo contínuo
+    // estiver ativo, volta a ouvir automaticamente
+    falarTextoMia(resposta, () => {
+
+        if (modoContinuoAtivo) {
+
+            reiniciarEscutaContinua();
+
+        }
+
+    });
 
 }
 
@@ -125,6 +143,22 @@ function enviarSugestaoMia(texto) {
 function processarMensagemMia(textoOriginal) {
 
     const texto = textoOriginal.toLowerCase().trim();
+
+    // Comando para parar o modo contínuo, falado ou escrito
+
+    if (/^(parar|pare|para|cancelar escuta|pode parar)$/.test(texto)) {
+
+        if (modoContinuoAtivo) {
+
+            pararModoContinuo();
+
+            return "Ok, parei de ouvir. Toque no microfone quando quiser conversar de novo.";
+
+        }
+
+        return "Já não estou ouvindo em modo contínuo, mas estou aqui se precisar!";
+
+    }
 
     // Se há uma pergunta pendente (ex.: "de qual conta?"), tenta resolver primeiro
     if (miaPendente) {
@@ -154,7 +188,7 @@ function processarMensagemMia(textoOriginal) {
 
     if (texto.includes("ajuda") || texto.includes("o que voc") || texto.includes("comandos")) {
 
-        return "Aqui está o que eu sei fazer:\n\n• \"saldo\" → seu saldo total\n• \"vencimentos\" → contas e faturas pendentes\n• \"lista de mercado\" → o que falta comprar\n• \"gastei 50 no mercado\" → registro a saída\n• \"recebi 200 de salário\" → registro a entrada";
+        return "Aqui está o que eu sei fazer:\n\n• \"saldo\" → seu saldo total\n• \"vencimentos\" → contas e faturas pendentes\n• \"lista de mercado\" → o que falta comprar\n• \"gastei 50 no mercado\" → registro a saída\n• \"recebi 200 de salário\" → registro a entrada\n• \"parar\" → encerra o modo de escuta contínua";
 
     }
 
@@ -520,27 +554,90 @@ function suportaReconhecimentoVoz() {
 
 }
 
+// Botão do microfone: liga/desliga o modo contínuo
 function alternarOuvirMia() {
 
-    if (ouvindoVoz && reconhecimentoVozMia) {
+    if (modoContinuoAtivo) {
 
-        reconhecimentoVozMia.stop();
+        pararModoContinuo();
 
         return;
 
     }
 
+    modoContinuoAtivo = true;
+
+    atualizarStatusEscutaMia();
+
     iniciarOuvirMia();
+
+}
+
+// Encerra o modo contínuo por completo (botão, comando de voz, ou erro)
+function pararModoContinuo() {
+
+    modoContinuoAtivo = false;
+
+    if (reconhecimentoVozMia) {
+
+        try {
+
+            reconhecimentoVozMia.stop();
+
+        } catch (erro) {
+
+            // já estava parado, tudo bem
+
+        }
+
+    }
+
+    if ("speechSynthesis" in window) {
+
+        window.speechSynthesis.cancel();
+
+    }
+
+    ouvindoVoz = false;
+
+    atualizarBotaoMicMia();
+
+    atualizarStatusEscutaMia();
+
+}
+
+// Reinicia a escuta automaticamente (chamado depois que a Mia termina de falar)
+function reiniciarEscutaContinua() {
+
+    if (!modoContinuoAtivo) return;
+
+    if (ouvindoVoz) return;
+
+    setTimeout(() => {
+
+        if (modoContinuoAtivo && !ouvindoVoz) {
+
+            iniciarOuvirMia();
+
+        }
+
+    }, 500);
 
 }
 
 function iniciarOuvirMia() {
 
+    if (ouvindoVoz) return;
+
     if (!suportaReconhecimentoVoz()) {
 
-        adicionarMensagemMia("Esse navegador/preview não tem a API de reconhecimento de voz disponível. Tente abrir o app direto no Chrome do Android (fora do preview do SPCK) para testar.", false);
+        adicionarMensagemMia("Esse navegador não tem a API de reconhecimento de voz disponível.", false);
 
         renderizarChatMia();
+
+        modoContinuoAtivo = false;
+
+        atualizarStatusEscutaMia();
 
         return;
 
@@ -556,34 +653,21 @@ function iniciarOuvirMia() {
 
     reconhecimentoVozMia.maxAlternatives = 1;
 
-    const botaoMic = document.getElementById("micBtnMia");
-
-    // Se nada acontecer em 4 segundos (nem onstart, nem onerror), avisa o usuário
-    const tempoLimite = setTimeout(() => {
-
-        if (!ouvindoVoz) {
-
-            adicionarMensagemMia("O microfone não respondeu. Esse preview provavelmente não suporta reconhecimento de voz — tente abrir o site direto no Chrome do Android.", false);
-
-            renderizarChatMia();
-
-        }
-
-    }, 4000);
+    resultadoRecebidoNestaSessao = false;
 
     reconhecimentoVozMia.onstart = () => {
 
-        clearTimeout(tempoLimite);
-
         ouvindoVoz = true;
 
-        if (botaoMic) botaoMic.classList.add("mic-ativo");
+        atualizarBotaoMicMia();
+
+        atualizarStatusEscutaMia();
 
     };
 
     reconhecimentoVozMia.onresult = (evento) => {
 
-        clearTimeout(tempoLimite);
+        resultadoRecebidoNestaSessao = true;
 
         const textoFalado = evento.results[0][0].transcript;
 
@@ -597,23 +681,21 @@ function iniciarOuvirMia() {
 
     reconhecimentoVozMia.onerror = (evento) => {
 
-        clearTimeout(tempoLimite);
-
         ouvindoVoz = false;
 
-        if (botaoMic) botaoMic.classList.remove("mic-ativo");
+        atualizarBotaoMicMia();
 
         const mensagensErro = {
 
-            "not-allowed": "Preciso da sua permissão para usar o microfone. Verifique as permissões do site/app.",
+            "not-allowed": "Preciso da sua permissão para usar o microfone. Verifique as permissões do site.",
 
-            "permission-denied": "Preciso da sua permissão para usar o microfone. Verifique as permissões do site/app.",
+            "permission-denied": "Preciso da sua permissão para usar o microfone. Verifique as permissões do site.",
 
-            "audio-capture": "Não encontrei um microfone disponível neste dispositivo/navegador.",
+            "audio-capture": "Não encontrei um microfone disponível neste dispositivo.",
 
-            "network": "Falha de conexão com o serviço de reconhecimento de voz. Ele precisa de internet para funcionar.",
+            "network": "Falha de conexão com o serviço de reconhecimento de voz.",
 
-            "service-not-allowed": "Este navegador/preview bloqueou o serviço de reconhecimento de voz. Tente abrir no Chrome do Android.",
+            "service-not-allowed": "Este navegador bloqueou o serviço de reconhecimento de voz.",
 
             "aborted": null,
 
@@ -623,25 +705,45 @@ function iniciarOuvirMia() {
 
         const chaveErro = evento.error;
 
-        const mensagem = mensagensErro.hasOwnProperty(chaveErro) ? mensagensErro[chaveErro] : `Não consegui usar o microfone (erro: ${chaveErro}). Tente abrir no Chrome do Android.`;
+        // Erros graves encerram o modo contínuo por completo
+        const errosGraves = ["not-allowed", "permission-denied", "audio-capture", "service-not-allowed"];
 
-        if (mensagem) {
+        if (errosGraves.includes(chaveErro)) {
 
-            adicionarMensagemMia(mensagem, false);
+            modoContinuoAtivo = false;
 
-            renderizarChatMia();
+            atualizarStatusEscutaMia();
+
+            const mensagem = mensagensErro[chaveErro];
+
+            if (mensagem) {
+
+                adicionarMensagemMia(mensagem, false);
+
+                renderizarChatMia();
+
+            }
 
         }
+
+        // "no-speech" (silêncio) não é um erro grave: no modo contínuo,
+        // simplesmente volta a ouvir de novo (tratado no onend)
 
     };
 
     reconhecimentoVozMia.onend = () => {
 
-        clearTimeout(tempoLimite);
-
         ouvindoVoz = false;
 
-        if (botaoMic) botaoMic.classList.remove("mic-ativo");
+        atualizarBotaoMicMia();
+
+        // Se terminou sem capturar nenhuma fala (silêncio) e o modo contínuo
+        // ainda está ativo, volta a ouvir automaticamente
+        if (modoContinuoAtivo && !resultadoRecebidoNestaSessao) {
+
+            reiniciarEscutaContinua();
+
+        }
 
     };
 
@@ -651,11 +753,13 @@ function iniciarOuvirMia() {
 
     } catch (erro) {
 
-        clearTimeout(tempoLimite);
-
-        adicionarMensagemMia(`Não consegui iniciar o microfone (${erro.message || erro}). Tente abrir o app no Chrome do Android.`, false);
+        adicionarMensagemMia(`Não consegui iniciar o microfone (${erro.message || erro}).`, false);
 
         renderizarChatMia();
+
+        modoContinuoAtivo = false;
+
+        atualizarStatusEscutaMia();
 
     }
 
@@ -665,11 +769,15 @@ function iniciarOuvirMia() {
 // Voz: Síntese de fala (a Mia falando)
 // ================================
 
-function falarTextoMia(texto) {
+function falarTextoMia(texto, aoTerminar) {
 
-    if (!vozAtivadaMia) return;
+    if (!vozAtivadaMia || !("speechSynthesis" in window)) {
 
-    if (!("speechSynthesis" in window)) return;
+        if (typeof aoTerminar === "function") aoTerminar();
+
+        return;
+
+    }
 
     const textoLimpo = texto.replace(/[•\n]/g, ". ").replace(/\s+/g, " ").trim();
 
@@ -680,6 +788,14 @@ function falarTextoMia(texto) {
     fala.lang = "pt-BR";
 
     fala.rate = 1;
+
+    if (typeof aoTerminar === "function") {
+
+        fala.onend = aoTerminar;
+
+        fala.onerror = aoTerminar;
+
+    }
 
     window.speechSynthesis.speak(fala);
 
@@ -706,6 +822,44 @@ function atualizarBotaoVozMia() {
 }
 
 // ================================
+// Atualizar visual do botão de microfone
+// ================================
+
+function atualizarBotaoMicMia() {
+
+    const botao = document.getElementById("micBtnMia");
+
+    if (!botao) return;
+
+    if (ouvindoVoz || modoContinuoAtivo) {
+
+        botao.classList.add("mic-ativo");
+
+    } else {
+
+        botao.classList.remove("mic-ativo");
+
+    }
+
+}
+
+function atualizarStatusEscutaMia() {
+
+    const status = document.getElementById("statusEscutaMia");
+
+    if (!status) return;
+
+    status.textContent = modoContinuoAtivo
+
+        ? "🔁 Modo contínuo ativo — toque no microfone ou diga \"parar\" para encerrar"
+
+        : "";
+
+    atualizarBotaoMicMia();
+
+}
+
+// ================================
 // Inicialização
 // ================================
 
@@ -714,5 +868,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarChatMia();
 
     atualizarBotaoVozMia();
+
+    atualizarStatusEscutaMia();
 
 });
