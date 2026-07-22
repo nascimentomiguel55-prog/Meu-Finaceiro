@@ -49,7 +49,7 @@
     gap:8px;
     overflow-x:auto;
     padding-bottom:6px;
-    margin-bottom:16px;
+    margin-bottom:10px;
     scrollbar-width:none;
 }
 
@@ -72,6 +72,16 @@
 
 .mia-chip:active{
     transform:scale(.95);
+}
+
+/* Status do modo contínuo */
+
+.status-escuta{
+    font-size:12px;
+    color:#F87171;
+    text-align:center;
+    margin-bottom:12px;
+    min-height:16px;
 }
 
 /* Mensagens do chat */
