@@ -1,0 +1,167 @@
+/* ==========================================================
+   TEMA CLARO
+   Este arquivo só entra em ação quando <html data-theme="light">
+   Ele funciona porque reaproveita os MESMOS nomes de classe
+   usados em todos os 14 arquivos CSS do app — assim, um único
+   arquivo cobre todos os módulos de uma vez.
+   ========================================================== */
+
+/* Fundo geral */
+
+[data-theme="light"] body{
+    background:#F1F5F9;
+    color:#0F172A;
+}
+
+/* Menu inferior */
+
+[data-theme="light"] .bottom-menu{
+    background:#FFFFFF;
+    box-shadow:0 0 20px rgba(0,0,0,.08);
+}
+
+[data-theme="light"] .bottom-menu button{
+    color:#0F172A;
+}
+
+/* Superfícies "nível 1" (cards principais) */
+
+[data-theme="light"] .form-card,
+[data-theme="light"] .lista-card,
+[data-theme="light"] .back-btn,
+[data-theme="light"] .icon-btn,
+[data-theme="light"] .chip,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .stat-mini,
+[data-theme="light"] .tabs-relatorio,
+[data-theme="light"] .mia-card{
+    background:#FFFFFF;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    color:#0F172A;
+}
+
+[data-theme="light"] .back-btn,
+[data-theme="light"] .icon-btn,
+[data-theme="light"] .chip,
+[data-theme="light"] .mic-btn{
+    color:#334155;
+}
+
+/* Superfícies "nível 2" (itens dentro dos cards, inputs, barras) */
+
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group select,
+[data-theme="light"] .resumo-item-icon,
+[data-theme="light"] .conta-item,
+[data-theme="light"] .movimento,
+[data-theme="light"] .cartao-item,
+[data-theme="light"] .conta-fixa-item,
+[data-theme="light"] .lancamento-item,
+[data-theme="light"] .item-mercado,
+[data-theme="light"] .vr-item,
+[data-theme="light"] .aporte-item,
+[data-theme="light"] .cofrinho-item,
+[data-theme="light"] .meta-item,
+[data-theme="light"] .historico-compra-item,
+[data-theme="light"] .historico-vr-item,
+[data-theme="light"] .historico-cofrinho-item,
+[data-theme="light"] .fatura-item,
+[data-theme="light"] .aporte-meta-item,
+[data-theme="light"] .categoria-barra,
+[data-theme="light"] .progresso-barra,
+[data-theme="light"] .meta-progresso-barra,
+[data-theme="light"] .limite-barra,
+[data-theme="light"] .cofrinho-objetivo-barra,
+[data-theme="light"] .barra-mes-coluna,
+[data-theme="light"] .mic-btn,
+[data-theme="light"] .ring-inner,
+[data-theme="light"] .previsao-texto,
+[data-theme="light"] .chat-input-area,
+[data-theme="light"] .chat-bubble-mia{
+    background:#F1F5F9;
+    color:#0F172A;
+}
+
+[data-theme="light"] .form-group input::placeholder{
+    color:#94A3B8;
+}
+
+[data-theme="light"] .chat-input-area input{
+    color:#0F172A;
+}
+
+/* Textos secundários (cinza claro no escuro -> cinza médio no claro) */
+
+[data-theme="light"] .page-header p,
+[data-theme="light"] .stat-label,
+[data-theme="light"] .empty,
+[data-theme="light"] .empty-mini,
+[data-theme="light"] .config-item-info p,
+[data-theme="light"] .comparacao-texto,
+[data-theme="light"] .info-texto,
+[data-theme="light"] .categoria-percentual,
+[data-theme="light"] .conta-item p,
+[data-theme="light"] .cartao-item p,
+[data-theme="light"] .conta-fixa-info p,
+[data-theme="light"] .lancamento-info p,
+[data-theme="light"] .item-mercado-info p,
+[data-theme="light"] .vr-info p,
+[data-theme="light"] .aporte-info p,
+[data-theme="light"] .historico-compra-item p,
+[data-theme="light"] .historico-vr-info p,
+[data-theme="light"] .historico-cofrinho-info p,
+[data-theme="light"] .fatura-item-info p,
+[data-theme="light"] .aporte-meta-info p,
+[data-theme="light"] .resumo-item-info p,
+[data-theme="light"] .vencimento-info p,
+[data-theme="light"] .meta-info-linha,
+[data-theme="light"] .sobre-info p,
+[data-theme="light"] .mia-card p,
+[data-theme="light"] .tip-texto p,
+[data-theme="light"] .config-item span,
+[data-theme="light"] .form-group label,
+[data-theme="light"] .cofrinho-objetivo-info{
+    color:#64748B;
+}
+
+/* Títulos e valores que eram brancos no escuro */
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] .stat-card strong,
+[data-theme="light"] .resumo-item-info h4,
+[data-theme="light"] .vencimento-info h4,
+[data-theme="light"] .titulo-card h3,
+[data-theme="light"] .lista-card-header h3,
+[data-theme="light"] .tip-texto h4,
+[data-theme="light"] .sobre-info h4,
+[data-theme="light"] .cofrinho-topo h4{
+    color:#0F172A;
+}
+
+/* Divisores */
+
+[data-theme="light"] .resumo-item,
+[data-theme="light"] .vencimento-item{
+    border-bottom-color:#E2E8F0;
+}
+
+/* Anel de progresso (cartões) - cor de fundo do restante do anel */
+
+[data-theme="light"] .ring{
+    background:conic-gradient(var(--cor, #2563EB) calc(var(--pct, 0) * 1%), #E2E8F0 0);
+}
+
+/* Dica do dia - gradiente mais suave no claro */
+
+[data-theme="light"] .tip-card{
+    background:linear-gradient(135deg, rgba(37,99,235,.08), rgba(124,58,237,.08));
+}
+
+/* Switch de configurações (trilho quando desligado) */
+
+[data-theme="light"] .switch input:not(:checked) + .switch-slider{
+    background:#CBD5E1;
+}
