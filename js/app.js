@@ -1,40 +1,8 @@
-// ================================
-// Meu Financeiro - app.js
-// ================================
+  if (nomePagina === "configuracoes") {
 
-const app = document.getElementById("app");
+    if (typeof aplicarTemaSalvo === "function") aplicarTemaSalvo();
 
-// -------------------------------
-// Carregar páginas
-// -------------------------------
-async function carregarPagina(nomePagina) {
-  
-  try {
-    
-    const resposta = await fetch(`pages/${nomePagina}.html`);
-    
-    if (!resposta.ok) {
-      throw new Error("Página não encontrada.");
-    }
-    
-    const html = await resposta.text();
-    
-    app.innerHTML = html;
-    
-    // Carrega menu inferior
-    try {
-      
-      const menu = await fetch("components/bottom-menu.html");
-      
-      if (menu.ok) {
-        app.innerHTML += await menu.text();
-      }
-      
-    } catch (e) {
-      console.log("Menu não encontrado.");
-    }
-    
-    atualizarDashboard();
+  }  atualizarDashboard();
     
     // Inicializa cada módulo quando sua página é carregada
     inicializarPagina(nomePagina);
