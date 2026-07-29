@@ -4,7 +4,15 @@
 <head>
 
   <meta charset="UTF-8">
-
+  
+<script>
+    (function() {
+      var tema = localStorage.getItem("temaApp") || "dark";
+      if (tema === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Meu Financeiro</title>
