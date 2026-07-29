@@ -20,12 +20,12 @@
         <div class="config-item">
 
             <div class="config-item-info">
-                <h4>Modo Escuro</h4>
-                <p>Por enquanto o app usa sempre o tema escuro. Modo claro em breve.</p>
+                <h4>Modo Claro</h4>
+                <p>Ative para usar o app com fundo claro em vez do escuro.</p>
             </div>
 
-            <label class="switch switch-disabled">
-                <input type="checkbox" checked disabled>
+            <label class="switch">
+                <input type="checkbox" id="temaSwitchInput" onchange="alternarTema()">
                 <span class="switch-slider"></span>
             </label>
 
@@ -35,6 +35,107 @@
 
     <section class="lista-card">
 
+        <h3>Backup</h3>
+
+        <p class="info-texto">Exporte seus dados para um arquivo, e guarde ele em algum lugar seguro (Google Drive, e-mail, etc). Se trocar de celular ou reinstalar o app, é só importar de volta.</p>
+
+        <button class="primary-button" onclick="exportarDados()">
+            <i data-lucide="download"></i>
+            Exportar Dados
+        </button>
+
+        <button class="primary-button-secundario" onclick="acionarImportacao()">
+            <i data-lucide="upload"></i>
+            Importar Dados
+        </button>
+
+        <input
+            type="file"
+            id="inputImportarBackup"
+            accept=".json,application/json"
+            style="display:none"
+            onchange="processarImportacao(event)"
+        >
+
+    </section>
+
+    <section class="lista-card">
+
+        <h3>Limpar Dados</h3>
+
+        <p class="aviso-texto">⚠️ Essas ações apagam os dados permanentemente e não podem ser desfeitas.</p>
+
+        <div class="config-item">
+            <span>Bancos e Contas</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('bancos', 'Bancos e Contas')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Movimentações (Financeiro)</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('financeiro', 'Movimentações')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Cartões de Crédito</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('cartoes', 'Cartões de Crédito')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Contas da Casa</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('casa', 'Contas da Casa')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Mercado</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('mercado', 'Mercado')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Vale Alimentação</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('vr', 'Vale Alimentação')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Projeto Moto</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('moto', 'Projeto Moto')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Metas</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('metas', 'Metas')">Limpar</button>
+        </div>
+
+        <div class="config-item">
+            <span>Histórico da Mia</span>
+            <button class="danger-button" onclick="limparModuloConfirmado('mia', 'Histórico da Mia')">Limpar</button>
+        </div>
+
+        <button class="primary-button-danger" onclick="limparTudoConfirmado()">
+            <i data-lucide="trash-2"></i>
+            Limpar Tudo
+        </button>
+
+    </section>
+
+    <section class="lista-card">
+
+        <h3>Sobre o App</h3>
+
+        <div class="sobre-info">
+
+            <h4>Meu Financeiro</h4>
+
+            <p class="sobre-versao">Versão 1.0.0</p>
+
+            <p>Aplicativo de controle financeiro pessoal completo: contas, movimentações, cartões de crédito, contas da casa, mercado com comparação de preços, vale alimentação, projeto moto, metas, relatórios e a assistente Mia.</p>
+
+            <p>Desenvolvido com HTML, CSS e JavaScript puro. Funciona 100% offline, com todos os dados guardados no seu próprio celular.</p>
+
+        </div>
+
+    </section>
+
+</div>
         <h3>Backup</h3>
 
         <p class="info-texto">Exporte seus dados para um arquivo, e guarde ele em algum lugar seguro (Google Drive, e-mail, etc). Se trocar de celular ou reinstalar o app, é só importar de volta.</p>
